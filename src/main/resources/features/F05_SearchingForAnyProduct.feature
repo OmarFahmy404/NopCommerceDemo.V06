@@ -1,3 +1,4 @@
+@SmokingTest
 Feature: Test search field
 
   Scenario: the logged user is able to search for any product by name

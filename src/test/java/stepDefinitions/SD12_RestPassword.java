@@ -13,11 +13,10 @@ import pages.PasswordRecoveryPage;
 import java.time.Duration;
 
 public class SD12_RestPassword {
-    WebDriver driver;
     LoginPage loginPage;
     PasswordRecoveryPage passwordRecoveryPage;
 
-    @Given("the user open and navigate to the login page")
+   /* @Given("the user open and navigate to the login page")
     public void  Navigate(){
         String path=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
@@ -26,16 +25,16 @@ public class SD12_RestPassword {
         driver.manage().window().maximize();
         driver.navigate().to("https://demo.nopcommerce.com/");
 
-    }
+    }*/
 
     @When("the user reset his password through reset password link")
     public void ClickOnResetPasswordLink(){
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(Hooks.driver);
         loginPage.ForgetPassword();
     }
     @And("he enter his valid email")
     public void EnterEmail(){
-        passwordRecoveryPage=new PasswordRecoveryPage(driver);
+        passwordRecoveryPage=new PasswordRecoveryPage(Hooks.driver);
         passwordRecoveryPage.RecoveryProcess();
 
     }
@@ -44,10 +43,10 @@ public class SD12_RestPassword {
     public void Checking(){
         Assert.assertEquals("Email with instructions has been sent to you.",passwordRecoveryPage.GetMessage());
     }
-    @And("Quit")
+   /* @And("Quit")
     public void Quit(){
         driver.quit();
-    }
+    }*/
 
 
 

@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src\\main\\resources\\features",
         glue="stepDefinitions",
-        tags = "@currency"
+        tags = "@SmokingTest",
+        plugin = {"pretty","html:target/cucumber-reports"},
+        monochrome = true
 )
 public class TestRunner {
     // where we will run our code

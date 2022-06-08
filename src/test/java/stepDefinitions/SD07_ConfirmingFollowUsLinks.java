@@ -16,28 +16,30 @@ import java.time.Duration;
 
 public class SD07_ConfirmingFollowUsLinks {
     MainPage mainPage;
-    WebDriver driver;
 
     @When("the guest click on the facebook link")
     public void ClickingOnFacebookLink() {
+        mainPage=new MainPage(Hooks.driver);
         mainPage.ConfirmingFacebookLink();
     }
 
     @When("the guest click on the twitter link")
     public void ClickingOnTwitterLink() {
+        mainPage=new MainPage(Hooks.driver);
         mainPage.ConfirmingTwitterLink();
     }
 
     @When("the guest click on the news link")
     public void ClickingOnNewsLink() {
-
+        mainPage=new MainPage(Hooks.driver);
         mainPage.ConfirmingNewsLink();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Hooks.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
     }
 
     @When("the guest click on the youtube link")
     public void ClickingOnYoutubeLink() {
+        mainPage=new MainPage(Hooks.driver);
         mainPage.ConfirmingYoutubeLink();
     }
 
@@ -53,7 +55,7 @@ public class SD07_ConfirmingFollowUsLinks {
 
     @Then("the guest redirected to the news page")
     public void ConfirmationOfNewsLink(){
-        Assert.assertTrue(driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]")).isEnabled());
+        Assert.assertTrue(Hooks.driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]")).isEnabled());
     }
 
     @Then("the guest redirected to the youtube page")

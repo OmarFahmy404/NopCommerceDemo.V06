@@ -10,7 +10,6 @@ import org.testng.Assert;
 import pages.*;
 
 public class SD10_CreatingSuccessfulOrder {
-    WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
     CheckOutPage checkOutPage;
@@ -18,7 +17,7 @@ public class SD10_CreatingSuccessfulOrder {
     ShoppingCartPage shoppingCartPage;
 
 
-    @Given("the user opened browser and navigates to the login page to add an item")
+  /*  @Given("the user opened browser and navigates to the login page to add an item")
     public void OpenAndNavigateToLoginPage(){
         String path=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
@@ -37,51 +36,33 @@ public class SD10_CreatingSuccessfulOrder {
     public void SelectedProduct(){
         homePage=new HomePage(driver);
         homePage.AddingToShoppingCart();
-    }
+    }*/
 
     @When("he completes his payment method")
     public void CompletionPaymentMethod(){
-        homePage=new HomePage(driver);
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
+        homePage.AddingToShoppingCart();
+        homePage=new HomePage(Hooks.driver);
         homePage.ClickOnShoppingCartTab();
-       shoppingCartPage=new ShoppingCartPage(driver);
+       shoppingCartPage=new ShoppingCartPage(Hooks.driver);
        shoppingCartPage.FinishingCheckProcess();
-        checkOutPage=new CheckOutPage(driver);
+        checkOutPage=new CheckOutPage(Hooks.driver);
         checkOutPage.FillingBillingFields();
 
     }
 
     @Then("the payment method of order has done")
     public void DidProcessFinishSuccessfully(){
-        thankYouPage=new ThankYouPage(driver);
+        thankYouPage=new ThankYouPage(Hooks.driver);
        // Assert.assertEquals("Thank you",thankYouPage.GetThankYouMessage());
         Assert.assertEquals("Your order has been successfully processed!",thankYouPage.GetSecondMessage());
 
     }
-    @And("close the final page of browser")
+  /*  @And("close the final page of browser")
     public void Close(){
         driver.quit();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }*/
 
 }

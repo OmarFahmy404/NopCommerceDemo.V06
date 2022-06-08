@@ -1,19 +1,17 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+import stepDefinitions.Hooks;
 
 import java.time.Duration;
 import java.util.List;
 
 public class HomePage {
     WebDriver driver;
+    CompareProductPage compareProductPage;
 
     public HomePage(WebDriver driver){
         this.driver=driver;
@@ -136,6 +134,26 @@ public class HomePage {
 //            Select select=new Select(apparelTab);
 //            select.selectByVisibleText("Shoes");
 
+        }
+
+        public Dimension GetDimensionOfCompareTable(){
+        Dimension dimension = null;
+        if (message.isDisplayed()){
+            Hooks.driver.navigate().to("https://demo.nopcommerce.com/compareproducts");
+            compareProductPage=new CompareProductPage(Hooks.driver);
+            compareProductPage.GetDimension();
+        }
+        return dimension;
+        }
+
+        public boolean ClearListBtnInComparePageIsDisplayed(){
+        boolean display = false;
+            if (message.isDisplayed()){
+                Hooks.driver.navigate().to("https://demo.nopcommerce.com/compareproducts");
+                compareProductPage=new CompareProductPage(Hooks.driver);
+               display= compareProductPage.ClearListBtnIsDisplayed();
+            }
+            return display;
         }
 
 

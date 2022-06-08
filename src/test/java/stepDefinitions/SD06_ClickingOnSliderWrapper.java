@@ -11,16 +11,16 @@ import pages.LoginPage;
 import pages.MainPage;
 
 public class SD06_ClickingOnSliderWrapper {
-    WebDriver driver;
     MainPage mainPage;
 
     @When("the guest click on the wrapper slider")
     public void ClickingOnSlider(){
+        mainPage=new MainPage(Hooks.driver);
         mainPage.VerifyingSliderWrapper();
     }
     @Then("the page will refresh")
     public void Verifying(){
-        Assert.assertEquals("https://demo.nopcommerce.com/",driver.getCurrentUrl());
+        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
     }
 
 //    @Before

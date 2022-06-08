@@ -10,18 +10,18 @@ import org.testng.Assert;
 import pages.LoginPage;
 
 public class SD02_LoginPageStepDef {
-    WebDriver driver;
     LoginPage loginPage;
 
     @When("the user enter his valid email and password")
     public void ValidData(){
+        loginPage=new LoginPage(Hooks.driver);
         loginPage.LoginStep();
 
     }
 
     @Then("the user could be able to login his page")
     public void SuccessLogin(){
-        Assert.assertEquals("https://demo.nopcommerce.com/",driver.getCurrentUrl());
+        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
     }
 
 //    @Before

@@ -1,29 +1,26 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import pages.RegisterPage;
 
 import java.time.Duration;
 
 public class SD01_RegisterPageStepDef {
-    public WebDriver ddriver;
     public RegisterPage registerPage;
 
     @When("the user enter all valid data")
     public void ValidData(){
+        registerPage=new RegisterPage(Hooks.driver);
         registerPage.RegisterStep();
     }
 
     @Then("the registration process should done successfully")
     public void SuccessProcess(){
-ddriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        Assert.assertEquals("Your registration completed",ddriver.findElement(registerPage.TheRegistrationMess()).getText());
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        Assert.assertEquals("Your registration completed", Hooks.driver.findElement(registerPage.TheRegistrationMess()).getText());
     }
 
 //    @Before

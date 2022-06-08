@@ -12,10 +12,10 @@ import pages.LoginPage;
 import pages.MainPage;
 
 public class SD03_SwitchingBetweenCurrency {
-    WebDriver driver;
     MainPage mainPage;
     @When("the user choose a Euro currency")
     public void ChoosingEuro(){
+        mainPage=new MainPage(Hooks.driver);
         mainPage.ChooseEuroCurrencySteps();
     }
     @And("switch it to Dollar currency")

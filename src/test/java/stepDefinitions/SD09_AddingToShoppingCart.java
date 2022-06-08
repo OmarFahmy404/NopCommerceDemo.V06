@@ -14,12 +14,11 @@ import pages.ShoppingCartPage;
 import java.time.Duration;
 
 public class SD09_AddingToShoppingCart {
-    WebDriver driver;
     HomePage homePage;
     ShoppingCartPage shoppingCartPage;
     LoginPage loginPage;
 
-    @Given("the user open browser and navigate to the login page to add an item")
+   /* @Given("the user open browser and navigate to the login page to add an item")
     public void OpenAndNavigate(){
         String path=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
@@ -34,26 +33,30 @@ public class SD09_AddingToShoppingCart {
     public void LoggingIn(){
         loginPage=new LoginPage(driver);
         loginPage.LoginStep();
-    }
+    }*/
 
     @When("the logged user select an item to add it to shopping cart")
     public void AddingItemToShoppingCart(){
        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        homePage=new HomePage(driver);
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
         homePage.AddingToShoppingCart();
 
     }
 
     @Then("the item added successfully to shopping cart")
     public void CheckingTheShoppingCart(){
-        homePage=new HomePage(driver);
+        homePage=new HomePage(Hooks.driver);
         homePage.ClickOnShoppingCartTab();
-        shoppingCartPage=new ShoppingCartPage(driver);
+        shoppingCartPage=new ShoppingCartPage(Hooks.driver);
         Assert.assertEquals("AP_MBP_13",shoppingCartPage.GetItemName());
 
     }
-    @And("close the browser after adding the item")
+
+
+   /* @And("close the browser after adding the item")
     public void Close(){
         driver.quit();
-    }
+    }*/
 }

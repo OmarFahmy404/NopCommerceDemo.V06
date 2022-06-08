@@ -1,3 +1,4 @@
+@SmokingTest
 Feature: test Register page
 
   Scenario: the user should be able to register with valid data

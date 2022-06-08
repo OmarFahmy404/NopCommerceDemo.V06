@@ -12,10 +12,13 @@ import pages.HomePage;
 import pages.LoginPage;
 
 public class SD04_HoverAndSelectedCategories {
-    WebDriver driver;
     HomePage homePage;
-    @When("the user hover on the category")
+    LoginPage loginPage;
+    @When("the logged user hover on the category")
     public void Hovering(){
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
         homePage.HoverSteps();
     }
     @And("select the first category")
@@ -24,7 +27,7 @@ public class SD04_HoverAndSelectedCategories {
     }
     @Then("the last category is a final category")
     public void Checking(){
-        Assert.assertEquals("https://demo.nopcommerce.com/digital-downloads",driver.getCurrentUrl());
+        Assert.assertEquals("https://demo.nopcommerce.com/digital-downloads",Hooks.driver.getCurrentUrl());
     }
 //    @Before
 //    public void OpenBrowserAndNavigate(){

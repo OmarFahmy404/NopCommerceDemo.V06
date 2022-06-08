@@ -14,12 +14,11 @@ import pages.ShoesPage;
 import java.time.Duration;
 
 public class SD13_FilterWithColor {
-    WebDriver driver;
     LoginPage loginPage;
     ShoesPage shoesPage;
     HomePage homePage;
 
-    @Given("user open and navigate to login page")
+   /* @Given("user open and navigate to login page")
     public void OpenAndNavigate(){
         String path=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
@@ -32,13 +31,15 @@ public class SD13_FilterWithColor {
     public void logginIn(){
         loginPage=new LoginPage(driver);
         loginPage.LoginStep();
-    }
+    }*/
 
     @When("the user select a color and unselect it")
     public void SelectAndUnSelectColor(){
-        homePage=new HomePage(driver);
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
         homePage.OpenShoesPage();
-        shoesPage=new ShoesPage(driver);
+        shoesPage=new ShoesPage(Hooks.driver);
         shoesPage.SelectAndUnSelectColor();
     }
 
@@ -52,8 +53,8 @@ public class SD13_FilterWithColor {
         Assert.assertTrue(shoesPage.IsRedShoesDisplay());
         Assert.assertFalse(shoesPage.IsGraySelected());
     }
-    @And("close")
+   /* @And("close")
     public void Close(){
         driver.quit();
-    }
+    }*/
 }

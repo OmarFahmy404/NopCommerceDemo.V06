@@ -35,9 +35,7 @@ public class WishListPage {
             List<WebElement> clos=table.findElements(By.tagName("td"));
             for (WebElement clo:clos) {
                 size=clo.getSize();
-
             }
-
         }
         return size;
     }

@@ -1,3 +1,4 @@
+@SmokingTest
 Feature: Test Login Page
 
 

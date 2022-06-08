@@ -35,7 +35,7 @@ public class LoginPage {
 
     public void LoginStep(){
         loginPage.click();
-        emailField.sendKeys("5@5.com");
+        emailField.sendKeys("test5@n.com");
         passwordField.sendKeys("123456");
         loginBtn.click();
     }

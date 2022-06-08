@@ -11,6 +11,7 @@ import java.util.List;
 
 public class CompareProductPage {
     WebDriver driver;
+    HomePage homePage;
 
     public CompareProductPage(WebDriver driver){
         this.driver=driver;
@@ -20,7 +21,12 @@ public class CompareProductPage {
     @FindBy(css = "table[class=\"compare-products-table\"]")
     WebElement compareProductTable;
 
+    @FindBy(xpath = "/html/body/div[6]/div[3]/div/div[2]/div/div[2]/a")
+    WebElement clearListBtn;
+
+
     public Dimension GetDimension(){
+       // homePage.RedirectToProductComparison();
         Dimension size = null;
         List<WebElement> rows=compareProductTable.findElements(By.tagName("tr"));
         for (WebElement row:rows) {
@@ -30,5 +36,9 @@ public class CompareProductPage {
             }
         }
         return size;
+    }
+
+    public boolean ClearListBtnIsDisplayed(){
+        return clearListBtn.isDisplayed();
     }
 }

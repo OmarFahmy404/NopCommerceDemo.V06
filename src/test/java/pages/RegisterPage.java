@@ -81,7 +81,7 @@ public class RegisterPage {
         Select selectYear=new Select(yearOfBirthDay);
         selectYear.selectByVisibleText("1998");
 
-        emailFieldFB.sendKeys("test@n.com");
+        emailFieldFB.sendKeys("test5@n.com");
         companyNameFieldFB.sendKeys("N/A");
         passwordFieldFB.sendKeys("123456");
         confirmPasswordFieldFB.sendKeys("123456");

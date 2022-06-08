@@ -14,13 +14,12 @@ import pages.ProductPage;
 import pages.WishListPage;
 
 public class SD08_AddingToWishList {
-    WebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
     ProductPage productPage;
     WishListPage wishListPage;
 
-    @Given("the user open browser and navigate to the login page")
+  /*  @Given("the user open browser and navigate to the login page")
     public void OpenAndNavigate(){
         String path=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
@@ -35,11 +34,13 @@ public class SD08_AddingToWishList {
     public void LoggingIn(){
         loginPage=new LoginPage(driver);
         loginPage.LoginStep();
-    }
+    }*/
 
     @When("the logged user select an item to add it to wishlist for the first time")
     public void SelectFirstItem(){
-        homePage=new HomePage(driver);
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
         homePage.AddToWishList();
        /* productPage=new ProductPage(driver);
         productPage.FirstAddingSteps();*/
@@ -53,14 +54,14 @@ public class SD08_AddingToWishList {
 
     @Then("the item added successfully to wishlist")
     public void CheckingTheWishlist(){
-        wishListPage=new WishListPage(driver);
+        wishListPage=new WishListPage(Hooks.driver);
         SoftAssert soft= new SoftAssert();
         soft.assertEquals("(2,8)",wishListPage.GetInfoFromTable());
 
     }
-    @And("close the browser")
+   /* @And("close the browser")
     public void CloseBrowser(){
         driver.quit();
-    }
+    }*/
 
 }

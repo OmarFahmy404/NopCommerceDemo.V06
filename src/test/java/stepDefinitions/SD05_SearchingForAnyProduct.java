@@ -11,21 +11,24 @@ import pages.HomePage;
 import pages.LoginPage;
 
 public class SD05_SearchingForAnyProduct {
-    WebDriver driver;
     HomePage homePage;
+    LoginPage loginPage;
 
     @When("^the logged user enter \"(.*)\" and click on search button$")
     public void SearchingByName(String s){
+        loginPage=new LoginPage(Hooks.driver);
+        loginPage.LoginStep();
+        homePage=new HomePage(Hooks.driver);
         homePage.SearchingForProduct(s);
     }
     @Then("the logged user redirected to the searched product page SKU")
     public void CheckinSKU(){
-        Assert.assertEquals("https://demo.nopcommerce.com/search?q=Apple+MacBook+Pro+13-inch",driver.getCurrentUrl());
+        Assert.assertEquals("https://demo.nopcommerce.com/search?q=COMP_CUST",Hooks.driver.getCurrentUrl());
     }
 
     @Then("the logged user redirected to the searched product page")
     public void CheckinProductName(){
-        Assert.assertEquals("https://demo.nopcommerce.com/search?q=Apple+MacBook+Pro+13-inch",driver.getCurrentUrl());
+        Assert.assertEquals("https://demo.nopcommerce.com/search?q=Apple+MacBook+Pro+13-inch",Hooks.driver.getCurrentUrl());
     }
 
 //    @Before

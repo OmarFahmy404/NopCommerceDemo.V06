@@ -22,7 +22,7 @@ public class PasswordRecoveryPage {
     WebElement message;
 
     public void RecoveryProcess(){
-        emailField.sendKeys("3@3.com");
+        emailField.sendKeys("test4@n.com");
         sendBtn.click();
     }
     public String GetMessage(){
