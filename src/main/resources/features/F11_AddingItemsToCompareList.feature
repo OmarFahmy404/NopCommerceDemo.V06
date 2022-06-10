@@ -1,3 +1,4 @@
+@AddingTo
 Feature: Test the process of adding different items to compare list
 
 #  Background:

@@ -1,3 +1,4 @@
+@hoverAndSelectCategories
 Feature: Test the hovering and selection different categories process
 
   Scenario: the logged user could be able to hover and select different categories

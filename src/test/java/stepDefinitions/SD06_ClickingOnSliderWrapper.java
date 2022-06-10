@@ -1,26 +1,39 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import pages.LoginPage;
 import pages.MainPage;
+
+import java.time.Duration;
 
 public class SD06_ClickingOnSliderWrapper {
     MainPage mainPage;
 
-    @When("the guest click on the wrapper slider")
-    public void ClickingOnSlider(){
+    @When("the guest click on the first wrapper slider")
+    public void ClickingOn1stSlider(){
         mainPage=new MainPage(Hooks.driver);
-        mainPage.VerifyingSliderWrapper();
+        mainPage.Verifying1stSliderWrapper();
     }
-    @Then("the page will refresh")
-    public void Verifying(){
+
+    @When("the guest click on the second wrapper slider")
+    public void ClickingOn2ndSlider(){
+        mainPage=new MainPage(Hooks.driver);
+        Hooks.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        mainPage.Verifying2ndSliderWrapper();
+    }
+
+    @Then("the welcome message will appear after click on the 1st one")
+    public void Verifying1st(){
         Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
+        Assert.assertTrue(mainPage.Is1stSliderDisplay());
+    }
+
+    @Then("the welcome message will appear after click on the 2nd one")
+    public void Verifying2nd(){
+        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
+        Assert.assertTrue(mainPage.Is2ndSliderDisplay());
     }
 
 //    @Before

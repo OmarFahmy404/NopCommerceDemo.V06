@@ -56,6 +56,7 @@ public class SD07_ConfirmingFollowUsLinks {
     @Then("the guest redirected to the news page")
     public void ConfirmationOfNewsLink(){
         Assert.assertTrue(Hooks.driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]")).isEnabled());
+        Assert.assertTrue(mainPage.NewsLink());
     }
 
     @Then("the guest redirected to the youtube page")

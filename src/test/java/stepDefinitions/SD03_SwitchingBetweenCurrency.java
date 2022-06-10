@@ -25,6 +25,8 @@ public class SD03_SwitchingBetweenCurrency {
     @Then("the currency switched from Euro to Dollar")
     public void CheckingTheActiveCurrency(){
         Assert.assertEquals("US Dollar",mainPage.SelectedItem().getFirstSelectedOption().getText());
+        Assert.assertEquals("$1,200.00",mainPage.GetThePriceContext());
+        Assert.assertFalse(mainPage.GetThePriceContext().contains("€"));
     }
 
 //    @Before

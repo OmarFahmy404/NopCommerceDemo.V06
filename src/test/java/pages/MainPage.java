@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.Set;
+import java.time.Duration;
 
 public class MainPage {
     WebDriver driver;
@@ -37,8 +37,19 @@ public class MainPage {
     @FindBy(name = "customerCurrency")
     WebElement currencyList;
 
-    @FindBy(id = "nivo-slider")
-    WebElement sliderWrapper;
+    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[1]")
+    WebElement theFirstSliderWrapper;
+
+    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[2]")
+    WebElement theSecondSliderWrapper;
+    @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[1]/div/div[2]/div[3]/div[1]/span")
+    WebElement theComputerPrice;
+
+    @FindBy(xpath = "/html/body/pre")
+    WebElement theContext;
+
+    @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2")
+    WebElement message;
     //////////////////////////////////////////////////////////////////////////
     public boolean IsFacebookLinkWork(){
         boolean exist = false;
@@ -77,6 +88,12 @@ public class MainPage {
             }
         }
         return exist;
+    }
+
+    public boolean NewsLink(){
+        newsLink.click();
+        return theContext.getText().contains("<title>nopCommerce demo store: News</title>");
+
     }
 
     public boolean IsYoutubeLinkWork(){
@@ -135,8 +152,23 @@ public class MainPage {
         selectDollar.selectByVisibleText("US Dollar");
     }
 
-    public void VerifyingSliderWrapper(){
+    public void Verifying1stSliderWrapper(){
 
-        sliderWrapper.click();
+        theFirstSliderWrapper.click();
+    }
+    public void Verifying2ndSliderWrapper(){
+
+        theSecondSliderWrapper.click();
+    }
+
+    public boolean Is1stSliderDisplay(){
+        return message.getText().contains("Welcome to our store");
+    }
+    public boolean Is2ndSliderDisplay(){
+        return message.getText().contains("Welcome to our store");
+    }
+
+    public String GetThePriceContext(){
+        return theComputerPrice.getText();
     }
 }

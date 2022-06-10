@@ -1,4 +1,5 @@
 @SmokingTest
+@AddingTo
 Feature: Test the process of adding an item to shopping cart
 
 #  Background:
