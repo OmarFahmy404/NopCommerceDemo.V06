@@ -1,3 +1,4 @@
+@filter
 Feature: Test filter process using color
 
 #  Background:

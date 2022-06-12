@@ -1,3 +1,4 @@
+@resetPass
 Feature: Test the reset password process
 #  Background:
 #    Given the user open and navigate to the login page

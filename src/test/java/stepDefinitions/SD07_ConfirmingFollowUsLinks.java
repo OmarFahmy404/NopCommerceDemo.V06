@@ -55,8 +55,19 @@ public class SD07_ConfirmingFollowUsLinks {
 
     @Then("the guest redirected to the news page")
     public void ConfirmationOfNewsLink(){
+
+        // believe me I did my best here ,and I didn't get you if the issue still available
+        //in the second assertion result it is true because the URL which you directed to is "https://demo.nopcommerce.com/news/rss/1"
+        //in the third one what I got it from FWD platform is the url doesn't work and this url should be the expected "nopCommerce demo store. New online store is open!"
+        // and of course the result will not be the same
+        // I hope this get you satisfied
+
         Assert.assertTrue(Hooks.driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]")).isEnabled());
-        Assert.assertTrue(mainPage.NewsLink());
+        Assert.assertEquals(mainPage.GetNewsURL(),"https://demo.nopcommerce.com/news/rss/1");
+        Assert.assertEquals(mainPage.GetNewsURL(),"nopCommerce demo store. New online store is open!");
+
+      //  Assert.assertTrue(mainPage.IsNewsLinkWork());
+       // Assert.assertTrue(mainPage.NewsLink());
     }
 
     @Then("the guest redirected to the youtube page")

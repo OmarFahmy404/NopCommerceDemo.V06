@@ -3,6 +3,8 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.MainPage;
 
@@ -24,16 +26,24 @@ public class SD06_ClickingOnSliderWrapper {
         mainPage.Verifying2ndSliderWrapper();
     }
 
-    @Then("the welcome message will appear after click on the 1st one")
+    @Then("the guest redirected to new page after click on the 1st one")
     public void Verifying1st(){
-        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
-        Assert.assertTrue(mainPage.Is1stSliderDisplay());
+      /*  Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
+        Assert.assertTrue(mainPage.Is1stSliderDisplay());*/
+        Assert.assertTrue(Hooks.driver.getCurrentUrl().contains("nopCommerce demo store. Nokia Lumia 1020"));
     }
 
-    @Then("the welcome message will appear after click on the 2nd one")
+    @Then("the guest redirected to new page after click on the 2nd one")
     public void Verifying2nd(){
-        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
-        Assert.assertTrue(mainPage.Is2ndSliderDisplay());
+//        Assert.assertEquals("https://demo.nopcommerce.com/",Hooks.driver.getCurrentUrl());
+//        Assert.assertTrue(mainPage.Is2ndSliderDisplay());
+
+
+        /*WebDriverWait wait = new WebDriverWait(Hooks.driver,10);
+        boolean check =  wait.until(ExpectedConditions.urlContains(" https://demo.nopcommerce.com/iphone-6"));
+        Assert.assertTrue(check);*/
+
+        Assert.assertTrue(Hooks.driver.getCurrentUrl().contains("https://demo.nopcommerce.com/iphone-6"));
     }
 
 //    @Before

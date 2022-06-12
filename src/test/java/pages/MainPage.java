@@ -6,8 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import stepDefinitions.Hooks;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class MainPage {
     WebDriver driver;
@@ -37,11 +39,42 @@ public class MainPage {
     @FindBy(name = "customerCurrency")
     WebElement currencyList;
 
-    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[1]")
-    WebElement theFirstSliderWrapper;
+//    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[1]")
+//    WebElement theFirstSliderWrapper;
+//
+//    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[2]")
+//    WebElement theSecondSliderWrapper;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
-    @FindBy(xpath = "//*[@id=\"nivo-slider\"]/a[2]")
-    WebElement theSecondSliderWrapper;
+    public WebElement Slider(String num){
+        return Hooks.driver.findElement(By.cssSelector("a[class=\"nivo-imageLink\"]:nth-child("+num+")"));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
     @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[1]/div/div[2]/div[3]/div[1]/span")
     WebElement theComputerPrice;
 
@@ -50,19 +83,6 @@ public class MainPage {
 
     @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2")
     WebElement message;
-    //////////////////////////////////////////////////////////////////////////
-    public boolean IsFacebookLinkWork(){
-        boolean exist = false;
-        for (String windowID:driver.getWindowHandles()) {
-            String windowURL=driver.switchTo().window(windowID).getCurrentUrl();
-            if (windowURL.equals("https://www.facebook.com/nopCommerce")){
-                exist=true;
-                driver.close();
-                break;
-            }
-        }
-        return exist;
-    }
 
     public boolean IsTwitterLinkWork(){
         boolean exist = false;
@@ -77,23 +97,18 @@ public class MainPage {
         return exist;
     }
 
-    public boolean IsNewsLinkWork(){
-        boolean exist = false;
-        for (String windowID:driver.getWindowHandles()) {
-            String windowURL=driver.switchTo().window(windowID).getCurrentUrl();
-            if (windowURL.equals("https://demo.nopcommerce.com/news/rss/1")){
-                exist=true;
-                driver.close();
-                break;
-            }
-        }
-        return exist;
-    }
 
-    public boolean NewsLink(){
+
+//    public boolean NewsLink(){
+//        newsLink.click();
+//        return theContext.getText().contains("<title>nopCommerce demo store: News</title>");
+//
+//    }
+
+    public String GetNewsURL(){
         newsLink.click();
-        return theContext.getText().contains("<title>nopCommerce demo store: News</title>");
-
+        ArrayList<String> tabs=new ArrayList<>(Hooks.driver.getWindowHandles());
+      return Hooks.driver.switchTo(). window(tabs.get(0)).getCurrentUrl();
     }
 
     public boolean IsYoutubeLinkWork(){
@@ -154,19 +169,13 @@ public class MainPage {
 
     public void Verifying1stSliderWrapper(){
 
-        theFirstSliderWrapper.click();
+        Slider("1").click();
     }
     public void Verifying2ndSliderWrapper(){
 
-        theSecondSliderWrapper.click();
+        Slider("2").click();
     }
 
-    public boolean Is1stSliderDisplay(){
-        return message.getText().contains("Welcome to our store");
-    }
-    public boolean Is2ndSliderDisplay(){
-        return message.getText().contains("Welcome to our store");
-    }
 
     public String GetThePriceContext(){
         return theComputerPrice.getText();
