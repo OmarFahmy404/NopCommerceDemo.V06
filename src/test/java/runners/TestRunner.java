@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src\\main\\resources\\features",
         glue="stepDefinitions",
-        tags = "@SmokingTest",
-        plugin = {"pretty","html:target/cucumber-reports"},
+        tags = "@regression",
+        plugin = {"pretty","html:target/cucumber-reports1"},
         monochrome = true
 )
 public class TestRunner {

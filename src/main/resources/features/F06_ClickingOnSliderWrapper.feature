@@ -1,4 +1,4 @@
-@SliderWrapper
+@regression
 Feature: Test the slider wrapper
 
   Scenario: the guest could be able to click on the first slider wrapper

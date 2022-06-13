@@ -1,4 +1,4 @@
-@filter
+@regression
 Feature: Test filter process using color
 
 #  Background:

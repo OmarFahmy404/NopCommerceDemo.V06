@@ -1,4 +1,4 @@
-@SmokingTest
+@regression
 Feature: Test Login Page
 
 

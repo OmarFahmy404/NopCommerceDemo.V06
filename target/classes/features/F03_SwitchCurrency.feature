@@ -1,4 +1,4 @@
-@currency
+@regression
 Feature: Test The Currency Feature
 
   Scenario: the user could be able to switching between Euro and Dollar

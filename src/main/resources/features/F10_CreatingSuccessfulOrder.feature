@@ -1,4 +1,4 @@
-@RegressionTest
+@regression
 Feature: Test the whole process of complete an order
 
   #Make sure that there is no product in shopping cart before or the user just register and login

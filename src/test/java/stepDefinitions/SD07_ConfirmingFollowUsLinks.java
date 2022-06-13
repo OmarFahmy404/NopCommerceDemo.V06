@@ -63,7 +63,6 @@ public class SD07_ConfirmingFollowUsLinks {
         // I hope this get you satisfied
 
         Assert.assertTrue(Hooks.driver.findElement(By.cssSelector("a[href=\"/news/rss/1\"]")).isEnabled());
-        Assert.assertEquals(mainPage.GetNewsURL(),"https://demo.nopcommerce.com/news/rss/1");
         Assert.assertEquals(mainPage.GetNewsURL(),"nopCommerce demo store. New online store is open!");
 
       //  Assert.assertTrue(mainPage.IsNewsLinkWork());

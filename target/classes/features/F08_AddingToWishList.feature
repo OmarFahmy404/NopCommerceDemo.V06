@@ -1,4 +1,4 @@
-@AddingTo
+@regression
 Feature: Test the process of adding items to wishlist
 
 #  Background:

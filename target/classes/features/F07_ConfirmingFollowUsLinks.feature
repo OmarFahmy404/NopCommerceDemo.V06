@@ -1,4 +1,4 @@
-@links
+@regression
 Feature: Test follow us links
 
   Scenario: the guest could be able to redirected to the facebook page
