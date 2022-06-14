@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "src\\main\\resources\\features",
         glue="stepDefinitions",
         tags = "@regression",
-        plugin = {"pretty","html:target/cucumber-reports1"},
+        plugin = {"pretty","html:target/cucumber.html"},
         monochrome = true
 )
 public class TestRunner {
